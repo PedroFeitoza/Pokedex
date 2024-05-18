@@ -18,12 +18,12 @@ public class ExemploService extends FileService<ExemploModel> {
     }
 
     @Override
-    protected Class<ExemploModel> getGenericClass() {
+    protected Class<ExemploModel> getClassModel() {
         return ExemploModel.class;
     }
 
     public List<ExemploModel> getAll() throws IOException {
-        return this.getAllFile();
+        return this.getAllFromFile();
     }
 
     public ExemploModel getById(Long id) throws IOException {

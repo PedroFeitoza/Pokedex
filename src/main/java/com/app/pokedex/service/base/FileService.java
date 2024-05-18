@@ -15,19 +15,20 @@ import java.util.List;
 @Service
 public abstract class FileService<T extends BaseModel> {
 
-    public abstract String getFileName();
+    protected abstract String getFileName();
+    protected abstract Class<T> getClassModel();
 
     private char separator = ';';
 
-    protected List<T> getAllFile() throws IOException {
+    protected List<T> getAllFromFile() throws IOException {
         try {
-            List<T> lista = new CsvToBeanBuilder<T>(new FileReader(getFileName()))
+            List<T> list = new CsvToBeanBuilder<T>(new FileReader(getFileName()))
                     .withSeparator(separator)
-                    .withType(getGenericClass())
+                    .withType(getClassModel())
                     .build()
                     .parse();
 
-            return lista;
+            return list;
         } catch (IOException e) {
             e.printStackTrace();
             throw new IOException("Erro ao ler o arquivo CSV", e);
@@ -36,45 +37,46 @@ public abstract class FileService<T extends BaseModel> {
 
     protected T getItemByIdFromFile(Long id) throws IOException {
         try {
-            List<T> lista = this.getAllFile();
+            List<T> list = this.getAllFromFile();
 
-            return lista.stream().filter(item -> item.getId().equals(id))
+            return list.stream().filter(item -> item.getId().equals(id))
                     .findFirst()
                     .orElseThrow(() -> new RuntimeException("Item não encontrado"));
         } catch (IOException e) {
             e.printStackTrace();
             throw new IOException("Erro ao ler o arquivo CSV", e);
+        } catch (RuntimeException e) {
+            throw new RuntimeException(e.getMessage());
         }
     }
 
-    protected T saveItemInFile(T novoItem) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
+    protected T saveItemInFile(T newItem)
+            throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
         try {
-            List<T> lista = this.getAllFile();
+            List<T> list = this.getAllFromFile();
 
-            long novoId = gerarNovoId(lista);
-            novoItem.setId(novoId);
-            lista.add(novoItem);
+            long newId = generateNewId(list);
+            newItem.setId(newId);
+            list.add(newItem);
 
             Writer writer = new FileWriter(getFileName());
             StatefulBeanToCsv<T> beanToCsv = new StatefulBeanToCsvBuilder<T>(writer)
                     .withSeparator(separator)
                     .build();
-            beanToCsv.write(lista);
+            beanToCsv.write(list);
             writer.close();
 
-            return novoItem;
+            return newItem;
         } catch (IOException e) {
             e.printStackTrace();
             throw new IOException("Erro ao salvar o novo item no arquivo CSV", e);
         }
     }
 
-    protected abstract Class<T> getGenericClass();
-
-    private long gerarNovoId(List<T> lista) {
+    private long generateNewId(List<T> list) {
         long maxId = 0;
 
-        for (T item : lista) {
+        for (T item : list) {
             if (item.getId() > maxId) {
                 maxId = item.getId();
             }
