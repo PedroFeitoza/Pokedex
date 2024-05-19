@@ -1,16 +1,27 @@
 package com.app.pokedex.model;
 
-public class Pokemon {
+import com.app.pokedex.model.base.BaseModel;
+
+public class Pokemon implements BaseModel {
 
     private String nome; 
-    public String tipo;
-    private int id; 
+    private String tipo;
+    private long id;
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
     //getter e setter ID 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int PokeId) {
+    public void setId(Long PokeId) {
         id = PokeId;
     }
 
@@ -23,22 +34,5 @@ public class Pokemon {
     public String getNome() {
         return nome; 
     }
-
-
-    //MOSTRAR NOME 
-    public void mostraNome() {
-        System.out.printf("O nome do seu pokemon é %s \n ", getNome());} 
-    public void mostrarId() {
-        System.out.printf("O ID do seu pokemon é %s \n", getId());
-       
-    }
-
-
-
-public Pokemon(String nome, String tipo){
-    this.nome = nome;
-    this.tipo = tipo;
-    this.id = id;
-}
 
 }
