@@ -27,8 +27,7 @@ public class Pokemon {
 
     //MOSTRAR NOME 
     public void mostraNome() {
-        System.out.printf("O nome do seu pokemon é %s \n ", getNome());
-
+        System.out.printf("O nome do seu pokemon é %s \n ", getNome());} 
     public void mostrarId() {
         System.out.printf("O ID do seu pokemon é %s \n", getId());
        
