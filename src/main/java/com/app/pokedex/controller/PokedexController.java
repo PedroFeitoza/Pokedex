@@ -2,6 +2,7 @@ package com.app.pokedex.controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,7 +31,7 @@ public class PokedexController {
     }
 
     @GetMapping("/{id}")
-    public Pokedex getById(@PathVariable Long id) throws IOException {
+    public Optional<Pokedex> getById(@PathVariable Long id) throws IOException {
         return pokedexService.getById(id);
     }
 

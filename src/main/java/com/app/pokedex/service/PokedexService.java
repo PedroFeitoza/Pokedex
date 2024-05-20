@@ -2,6 +2,7 @@ package com.app.pokedex.service;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -26,7 +27,7 @@ public class PokedexService extends FileService<Pokedex> {
         return this.getAllFromFile();
     }
 
-    public Pokedex getById(Long id) throws IOException {
+    public Optional<Pokedex> getById(Long id) throws IOException {
         return this.getItemByIdFromFile(id);
     }
 

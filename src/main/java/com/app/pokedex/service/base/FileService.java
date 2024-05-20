@@ -11,6 +11,8 @@ import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 
 import java.io.*;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
 
 @Service
 public abstract class FileService<T extends BaseModel> {
@@ -36,13 +38,16 @@ public abstract class FileService<T extends BaseModel> {
         }
     }
 
-    protected T getItemByIdFromFile(Long id) throws IOException {
+    protected Optional<T> getItemByIdFromFile(Long id) throws IOException {
         try {
             List<T> list = this.getAllFromFile();
-
-            return list.stream().filter(item -> item.getId().equals(id))
-                    .findFirst()
-                    .orElseThrow(() -> new RuntimeException("Item não encontrado"));
+            Stream<T> filteredItem = list.stream().filter(item -> item.getId().equals(id));
+                                  
+            if(filteredItem == null) {
+                return null;
+            }
+            
+            return filteredItem.findFirst();
         } catch (IOException e) {
             e.printStackTrace();
             throw new IOException("Erro ao ler o arquivo CSV", e);

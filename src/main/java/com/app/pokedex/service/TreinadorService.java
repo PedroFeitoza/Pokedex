@@ -2,6 +2,7 @@ package com.app.pokedex.service;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 import com.app.pokedex.model.Treinador;
@@ -25,7 +26,7 @@ public class TreinadorService extends FileService<Treinador> {
         return this.getAllFromFile();
     }
 
-    public Treinador getById(Long id) throws IOException {
+    public Optional<Treinador> getById(Long id) throws IOException {
         return this.getItemByIdFromFile(id);
     }
 
