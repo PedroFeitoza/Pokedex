@@ -1,15 +1,21 @@
 package com.app.pokedex.model;
 
-public class Treinador {
+import com.app.pokedex.model.base.BaseModel;
+import com.opencsv.bean.CsvBindByName;
+
+public class Treinador implements BaseModel {
+     @CsvBindByName(column = "Nome Treinador")
     private String nome;
+    @CsvBindByName(column = "Liga")
     private String liga;
-    private long id;
+    @CsvBindByName(column = "Id")
+    private Long id;
 
     public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -22,7 +28,7 @@ public class Treinador {
     }
 
     public String getLiga() {
-        return nome;
+        return liga;
     }
 
     public void setLiga(String liga) {
