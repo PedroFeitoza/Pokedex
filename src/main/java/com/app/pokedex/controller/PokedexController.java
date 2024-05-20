@@ -24,7 +24,7 @@ public class PokedexController {
         this.pokedexService = pokedexService;
     }
 
-        @GetMapping
+    @GetMapping
     public List<Pokedex> getAll() throws IOException {
         return pokedexService.getAll();
     }
@@ -35,8 +35,8 @@ public class PokedexController {
     }
 
     @PostMapping(value = "/add", consumes = "application/json", produces = "application/json")
-    public Pokedex createItem(@RequestBody Pokedex pokedex) throws CsvDataTypeMismatchException, CsvRequiredFieldEmptyException, IOException {
-       return pokedexService.saveItem(pokedex);
+    public Pokedex createItem(@RequestBody Pokedex pokedex)
+            throws CsvDataTypeMismatchException, CsvRequiredFieldEmptyException, IOException {
+        return pokedexService.saveItem(pokedex);
     }
 }
-

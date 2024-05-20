@@ -36,7 +36,8 @@ public class TreinadorController {
     }
 
     @PostMapping(value = "/add", consumes = "application/json", produces = "application/json")
-    public Treinador createItem(@RequestBody Treinador treinador) throws CsvDataTypeMismatchException, CsvRequiredFieldEmptyException, IOException {
-       return treinadorService.saveItem(treinador);
+    public Treinador createItem(@RequestBody Treinador treinador)
+            throws CsvDataTypeMismatchException, CsvRequiredFieldEmptyException, IOException {
+        return treinadorService.saveItem(treinador);
     }
 }
