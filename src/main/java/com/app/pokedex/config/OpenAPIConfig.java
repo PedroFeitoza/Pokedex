@@ -27,7 +27,7 @@ import io.swagger.v3.oas.annotations.servers.Server;
                     "- **Linkedin:**\n" +
                     "### Contato 5:\n" +
                     "- **Nome:** DANIEL AUGUSTO DE AMORIM BORGES\n" +
-                    "- **Linkedin:**\n"
+                    "- **Linkedin:** https://www.linkedin.com/in/danielborgesam/\n" 
             ),
             servers = {
                     @Server(
