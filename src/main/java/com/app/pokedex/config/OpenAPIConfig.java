@@ -21,7 +21,7 @@ import io.swagger.v3.oas.annotations.servers.Server;
                     "- **Linkedin:** \n" +
                     "### Contato 3:\n" +
                     "- **Nome:** TAYNA DE PAULA APOLINÁRIO\n" +
-                    "- **Linkedin:**\n" +
+                    "- **Linkedin:**https://www.linkedin.com/in/tayna-apolinario-7b1341217/\n" +
                     "### Contato 4:\n" +
                     "- **Nome:** EMILY ROGATTI NANTES\n" +
                     "- **Linkedin:**\n" +
