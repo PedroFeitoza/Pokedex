@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.app.pokedex.model.ExemploModel;
 import com.app.pokedex.model.Treinador;
 import com.app.pokedex.service.TreinadorService;
 import com.opencsv.exceptions.CsvDataTypeMismatchException;

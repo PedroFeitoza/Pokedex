@@ -4,7 +4,7 @@ import com.app.pokedex.model.base.BaseModel;
 import com.opencsv.bean.CsvBindByName;
 
 public class Treinador implements BaseModel {
-     @CsvBindByName(column = "Nome Treinador")
+    @CsvBindByName(column = "Nome Treinador")
     private String nome;
     @CsvBindByName(column = "Liga")
     private String liga;

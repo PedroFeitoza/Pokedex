@@ -1,11 +1,14 @@
 package com.app.pokedex.model;
 
 import com.app.pokedex.model.base.BaseModel;
+import com.opencsv.bean.CsvBindByName;
 
 public class Pokemon implements BaseModel {
-
+    @CsvBindByName(column = "Nome Pokemon")
     private String nome; 
+    @CsvBindByName(column = "Tipo Pokemon")
     private String tipo;
+    @CsvBindByName(column = "ID Pokemon")
     private long id;
 
     public String getTipo() {
@@ -28,7 +31,7 @@ public class Pokemon implements BaseModel {
     //getter e setter Nome 
     public void setNome(String meuNome){
         nome = meuNome;
-        
+
     }
 
     public String getNome() {
