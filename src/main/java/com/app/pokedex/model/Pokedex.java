@@ -1,31 +1,37 @@
 package com.app.pokedex.model;
 
-public class Pokedex {
-    private long Id;
-    private long Idtreinador;
-    private long Idpokemon;
+import com.app.pokedex.model.base.BaseModel;
+import com.opencsv.bean.CsvBindByName;
+
+public class Pokedex implements BaseModel {
+    @CsvBindByName(column = "ID Pokedex")
+    private Long Id;
+    @CsvBindByName(column = "ID Treinador")
+    private Long Idtreinador;
+    @CsvBindByName(column = "ID Pokemon")
+    private Long Idpokemon;
         
-     public long getId () {
+     public Long getId () {
        return Id;
      }
         
-    public void setId(long ID) {
+    public void setId(Long ID) {
         this.Id = ID;
     }
         
-    public long getIdtreinador () {
+    public Long getIdtreinador () {
         return Idtreinador;
     }
         
-    public void setIdtreinador(long IDtreinador) {
+    public void setIdtreinador(Long IDtreinador) {
         this.Idtreinador = IDtreinador;
     }
         
-    public long getIdpokemon () {
+    public Long getIdpokemon () {
         return Idpokemon;
     }
         
-    public void setIdpokemon (long IDpokemon) {
+    public void setIdpokemon (Long IDpokemon) {
         this.Idpokemon = IDpokemon;
     }
          

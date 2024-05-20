@@ -4,18 +4,18 @@ import java.io.IOException;
 import java.util.List;
 
 import com.app.pokedex.model.Pokedex;
-import com.app.pokedex.model.Pokemon;
+import com.app.pokedex.service.base.FileService;
 import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 
-public class PokedexService {
+public class PokedexService extends FileService<Pokedex> {
      @Override
     public String getFileName() {
         return "src\\main\\resources\\data\\pokedex.csv";
     }
 
     @Override
-    protected Class<Pokedex> getClassPokedex() {
+    protected Class<Pokedex> getClassModel() {
         return Pokedex.class;
     }
 
@@ -31,4 +31,3 @@ public class PokedexService {
         return this.saveItemInFile(e);
     }
 }
-

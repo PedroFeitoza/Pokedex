@@ -10,33 +10,33 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.app.pokedex.model.Pokemon;
-import com.app.pokedex.service.PokemonService;
+import com.app.pokedex.model.Treinador;
+import com.app.pokedex.service.TreinadorService;
 import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 
 @RestController
-@RequestMapping("/api/Pokemon")
-public class PokemonController {
-    private final PokemonService pokemonService;
+@RequestMapping("/api/treinador")
+public class TreinadorController {
 
-    public PokemonController(PokemonService pokemonService) {
-        this.pokemonService = pokemonService;
+    private final TreinadorService treinadorService;
+
+    public TreinadorController(TreinadorService treinadorService) {
+        this.treinadorService = treinadorService;
     }
 
     @GetMapping
-    public List<Pokemon> getAll() throws IOException {
-        return pokemonService.getAll();
+    public List<Treinador> getAll() throws IOException {
+        return treinadorService.getAll();
     }
 
     @GetMapping("/{id}")
-    public Pokemon getById(@PathVariable Long id) throws IOException {
-        return pokemonService.getById(id);
+    public Treinador getById(@PathVariable Long id) throws IOException {
+        return treinadorService.getById(id);
     }
 
     @PostMapping(value = "/add", consumes = "application/json", produces = "application/json")
-    public Pokemon createItem(@RequestBody Pokemon pokemon)
-            throws CsvDataTypeMismatchException, CsvRequiredFieldEmptyException, IOException {
-        return pokemonService.saveItem(pokemon);
+    public Treinador createItem(@RequestBody Treinador treinador) throws CsvDataTypeMismatchException, CsvRequiredFieldEmptyException, IOException {
+       return treinadorService.saveItem(treinador);
     }
 }
