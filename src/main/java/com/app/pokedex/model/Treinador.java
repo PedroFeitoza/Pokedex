@@ -4,12 +4,14 @@ import com.app.pokedex.model.base.BaseModel;
 import com.opencsv.bean.CsvBindByName;
 
 public class Treinador implements BaseModel {
-    @CsvBindByName(column = "Nome Treinador")
-    private String nome;
-    @CsvBindByName(column = "Liga")
-    private String liga;
     @CsvBindByName(column = "Id")
     private Long id;
+
+    @CsvBindByName(column = "Nome Treinador")
+    private String nome;
+
+    @CsvBindByName(column = "Liga")
+    private String liga;
 
     public Long getId() {
         return id;

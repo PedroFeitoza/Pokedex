@@ -16,6 +16,7 @@ import java.util.List;
 public abstract class FileService<T extends BaseModel> {
 
     protected abstract String getFileName();
+
     protected abstract Class<T> getClassModel();
 
     private char separator = ';';

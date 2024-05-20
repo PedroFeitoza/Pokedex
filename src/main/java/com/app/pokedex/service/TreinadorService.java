@@ -10,7 +10,7 @@ import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 
 @Service
-public class TreinadorService extends FileService<Treinador>{
+public class TreinadorService extends FileService<Treinador> {
     @Override
     protected String getFileName() {
         return "src\\main\\resources\\data\\treinador.csv";
@@ -29,9 +29,8 @@ public class TreinadorService extends FileService<Treinador>{
         return this.getItemByIdFromFile(id);
     }
 
-    public Treinador saveItem(Treinador e) throws CsvDataTypeMismatchException, CsvRequiredFieldEmptyException, IOException {
+    public Treinador saveItem(Treinador e)
+            throws CsvDataTypeMismatchException, CsvRequiredFieldEmptyException, IOException {
         return this.saveItemInFile(e);
     }
 }
-
-
