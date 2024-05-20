@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
-
 import com.app.pokedex.model.Pokemon;
 import com.app.pokedex.service.base.FileService;
 import com.opencsv.exceptions.CsvDataTypeMismatchException;
@@ -32,10 +31,8 @@ public class PokemonService extends FileService<Pokemon> {
         return this.getItemByIdFromFile(id);
 
     }
-
-    public Pokemon saveItem(Pokemon e)
+      public Pokemon saveItem(Pokemon e)
             throws CsvDataTypeMismatchException, CsvRequiredFieldEmptyException, IOException {
         return this.saveItemInFile(e);
     }
-
 }
